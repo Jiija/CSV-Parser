@@ -3,4 +3,4 @@ project(SimpleCSVReader)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(SimpleCSVReader main.cpp CVSParser/CVSParser.h CVSParser/CVSParser.cpp)
+add_executable(SimpleCSVReader main.cpp CSVParser/CSVParser.h CSVParser/CSVParser.cpp)
