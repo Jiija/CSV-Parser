@@ -27,26 +27,26 @@ private:
 namespace operations {
     const operation add = [](uint fArg, uint sArg) {
         if (fArg >= UINT_MAX - sArg)
-            throw new CSVParserException("Addition overflow");
+            throw CSVParserException("Addition overflow");
         return fArg + sArg;
     };
 
     const operation sub = [](uint fArg, uint sArg) {
         if (fArg < sArg)
-            throw new CSVParserException("Substraction underflow");
+            throw CSVParserException("Substraction underflow");
         return fArg - sArg;
     };
 
     const operation div = [](uint fArg, uint sArg) {
         if (sArg == 0)
-            throw new CSVParserException("Division by zero");
+            throw CSVParserException("Division by zero");
         return fArg / sArg;
     };
 
     const operation mul = [](uint fArg, uint sArg) {
         uint res = fArg * sArg;
         if (fArg != 0 && sArg != 0 && fArg != res / sArg)
-            throw new CSVParserException("Multiplication overflow");
+            throw CSVParserException("Multiplication overflow");
         return res;
     };
 }
@@ -113,7 +113,7 @@ void CSVParser::impl::parse(istream &in)
 
         uint column = stoul(token);
         if (rows.count(column))
-            throw new CSVParserException("Duplicate row indices");
+            throw CSVParserException("Duplicate row indices");
         rows[column] = i;
 
         while(getline(tokenizer, token, ','))
